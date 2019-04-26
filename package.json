@@ -2,8 +2,10 @@
     "name": "state-glue",
     "version": "1.0.0",
     "description": "Typescript implementation of the Model",
-    "main": "build/state-glue.js",
+    "main": "build/js/index.js",
+    "types": "build/js/index.d.ts",
     "scripts": {
+        "upgrade-dep": "ncu -u",
         "compile": "tsc",
         "format": "prettier --write \"src/**/*.ts\" .prettierrc jest.config.js package.json tsconfig.json tslint.json",
         "lint": "tslint -p tsconfig.json",
@@ -12,23 +14,24 @@
         "webpack": "webpack",
         "build": "npm run format && npm run compile",
         "check": "npm run format && npm run compile && npm run lint && npm run test",
-        "package": "npm run format && npm run compile && npm run lint && npm run docs && npm run webpack"
+        "package": "npm run format && npm run compile && npm run lint && npm run docs"
     },
     "author": "Yuriy Gorvitovskiy",
     "license": "ISC",
     "dependencies": {},
     "devDependencies": {
-        "@types/jest": "23.3.12",
-        "jest": "23.6.0",
-        "prettier": "1.15.3",
-        "ts-jest": "23.10.5",
-        "ts-loader": "5.3.3",
-        "ts-node": "7.0.1",
-        "tslint": "5.12.1",
-        "tslint-config-prettier": "1.17.0",
+        "@types/jest": "24.0.11",
+        "jest": "24.7.1",
+        "npm-check-updates": "3.1.8",
+        "prettier": "1.17.0",
+        "ts-jest": "24.0.2",
+        "ts-loader": "5.4.3",
+        "ts-node": "8.1.0",
+        "tslint": "5.16.0",
+        "tslint-config-prettier": "1.18.0",
         "typedoc": "0.14.2",
-        "typescript": "3.2.2",
-        "webpack": "4.28.4",
-        "webpack-cli": "3.2.1"
+        "typescript": "3.4.5",
+        "webpack": "4.30.0",
+        "webpack-cli": "3.3.1"
     }
 }

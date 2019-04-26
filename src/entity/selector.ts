@@ -14,6 +14,7 @@ export enum ComparisonOperation {
 
 export interface IFilter {
     attribute: string;
+    operation: ComparisonOperation;
     values: any[];
 }
 

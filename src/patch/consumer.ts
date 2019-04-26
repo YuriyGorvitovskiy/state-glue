@@ -1,5 +1,5 @@
 import { IPatch } from "./patch";
 
-export abstract class PatchConsumer {
-    public abstract apply(patch: IPatch): void;
+export interface IPatchConsumer {
+    apply(patch: IPatch): void;
 }

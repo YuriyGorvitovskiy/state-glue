@@ -8,5 +8,5 @@ export interface IPatch {
     operation: string;
     type: string;
     id: string;
-    attribute?: { [key: string]: any };
+    attributes?: { [key: string]: any };
 }
