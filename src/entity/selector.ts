@@ -30,8 +30,9 @@ export interface IPage {
 
 export interface ISelector {
     type: string;
-    attributes: string[];
+    ids: string[];
     filters: IFilter[];
     sortings: ISorting[];
     page: IPage;
+    attributes: string[];
 }
