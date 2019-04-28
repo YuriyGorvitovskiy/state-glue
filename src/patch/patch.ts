@@ -1,12 +1,12 @@
-export enum PatchOperation {
+export enum PatchOp {
     UPSERT = "upsert",
     UPDATE = "update",
     DELETE = "delete"
 }
 
 export interface IPatch {
-    operation: string;
+    op: string;
     type: string;
     id: string;
-    attributes?: { [key: string]: any };
+    attr?: { [key: string]: any };
 }

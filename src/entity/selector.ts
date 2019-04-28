@@ -1,38 +1,24 @@
-export enum ComparisonOperation {
-    EQUAL = "equal",
-    IN = "in",
-    LESS = "less",
-    MORE = "more",
-    BETWEEN = "between",
-
-    NOT_EQUAL = "not-equal",
-    NOT_IN = "not-in",
-    NOT_LESS = "not-less",
-    NOT_MORE = "not-more",
-    NOT_BETWEEN = "not-between"
-}
+import { primitive } from "../model/primitive";
 
 export interface IFilter {
-    attribute: string;
-    operation: ComparisonOperation;
-    values: any[];
+    attr: string;
+    value: primitive[];
 }
 
 export interface ISorting {
-    attribute: string;
-    ascending: boolean;
+    attr: string;
+    asc: boolean;
 }
 
 export interface IPage {
-    begin: number;
+    from: number;
     max: number;
 }
 
 export interface ISelector {
     type: string;
-    ids: string[];
-    filters: IFilter[];
-    sortings: ISorting[];
+    filter: IFilter[];
+    sort: ISorting[];
     page: IPage;
-    attributes: string[];
+    attr: string[];
 }

@@ -1,9 +1,9 @@
 import { Container } from "../model/container";
-import { Primitive } from "../model/primitive";
+import { SMPrimitive } from "../model/primitive";
 
 export interface IParamDeclaration {
     container: Container;
-    primitive: Primitive;
+    primitive: SMPrimitive;
     target?: string;
 }
 

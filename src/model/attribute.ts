@@ -1,6 +1,6 @@
-import { Primitive } from "./primitive";
+import { SMPrimitive } from "./primitive";
 
 export interface IAttribute {
-    type: Primitive;
+    type: SMPrimitive;
     target?: string;
 }

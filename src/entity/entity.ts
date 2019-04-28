@@ -1,5 +1,7 @@
+import { primitive } from "../model/primitive";
+
 export interface IEntity {
     type: string;
     id: string;
-    attributes: { [key: string]: any };
+    attr: { [name: string]: primitive | primitive[] };
 }
