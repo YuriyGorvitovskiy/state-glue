@@ -1,8 +1,7 @@
 import { primitive } from "../model/primitive";
 
 export interface IFilter {
-    attr: string;
-    value: primitive[];
+    [attr: string]: primitive[];
 }
 
 export interface ISorting {
@@ -17,7 +16,7 @@ export interface IPage {
 
 export interface ISelector {
     type: string;
-    filter: IFilter[];
+    filter: IFilter;
     sort: ISorting[];
     page: IPage;
     attr: string[];
