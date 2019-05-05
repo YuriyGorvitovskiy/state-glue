@@ -6,7 +6,7 @@ export interface IFilter {
 
 export interface ISorting {
     attr: string;
-    asc: boolean;
+    desc?: boolean;
 }
 
 export interface IPage {
@@ -17,7 +17,7 @@ export interface IPage {
 export interface ISelector {
     type: string;
     filter: IFilter;
-    sort: ISorting[];
-    page: IPage;
+    sort?: ISorting[];
+    page?: IPage;
     attr: string[];
 }
