@@ -5,7 +5,7 @@ export enum SMPrimitive {
     REFERENCE = "reference",
     STRING = "string",
     TEXT = "text",
-    TIMESTAMP = "timestamp"
+    TIMESTAMP = "timestamp",
 }
 
 export enum JSPrimitive {
@@ -13,7 +13,7 @@ export enum JSPrimitive {
     DATE = "date",
     NUMBER = "number",
     STRING = "string",
-    UNDEFINED = "undefined"
+    UNDEFINED = "undefined",
 }
 
 export type primitive = boolean | number | string | Date;

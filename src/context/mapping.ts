@@ -4,7 +4,7 @@ export enum Start {
     GLOBAL = "global",
     CONTEXT = "context",
     PARAM = "param",
-    FIXED = "fixed"
+    FIXED = "fixed",
 }
 
 export interface IStep {

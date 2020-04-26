@@ -7,9 +7,11 @@ export interface IViewRequest<P> {
     params: P;
 }
 
+export type IChild<P> = IViewRequest<P> | ILayout<P>;
+
 export interface ILayout<P> {
     widget: IWidget<P>;
     params: P;
     event?: IEvent[];
-    children?: Array<IViewRequest<any> | ILayout<any>>;
+    children?: IChild<any>[];
 }

@@ -1,7 +1,7 @@
 export enum PatchOp {
     UPSERT = "upsert",
     UPDATE = "update",
-    DELETE = "delete"
+    DELETE = "delete",
 }
 
 export interface IPatch {
