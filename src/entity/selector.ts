@@ -15,9 +15,9 @@ export interface IPage {
 }
 
 export interface ISelector {
-    type: string;
-    filter: IFilter;
-    sort?: ISorting[];
-    page?: IPage;
     attr: string[];
+    filter: IFilter;
+    page?: IPage;
+    sort?: ISorting[];
+    type: string;
 }

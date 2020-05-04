@@ -1,4 +1,4 @@
-import { IFilter, ISorting } from "../entity/selector";
+import { IFilter, IPage, ISorting } from "../entity/selector";
 
 export enum Start {
     GLOBAL = "global",
@@ -8,19 +8,18 @@ export enum Start {
 }
 
 export interface IStep {
-    type: string;
-    in_attr: string;
-    out_attr: string;
-    filters: IFilter[];
-    sortings: ISorting[];
-    page: {
-        begin: number;
-        max: number;
-    };
+    readonly input: string;
+    readonly output: string;
+    readonly filter: IFilter;
+    readonly page?: IPage;
+    readonly sort?: ISorting[];
+    readonly type: string;
 }
 
 export interface IMapping {
-    start: Start;
-    value: any;
-    steps: IStep[];
+    readonly $type: "mappiing";
+    readonly $array: boolean;
+    readonly start: Start;
+    readonly value: any;
+    readonly steps: readonly IStep[];
 }

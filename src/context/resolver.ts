@@ -1,5 +1,3 @@
-import { ContextDeclaration } from "./context";
+import { Context, ContextDeclaration } from "./context";
 
-export abstract class ContextResolver {
-    public abstract resolve<P, C>(params: P, context: ContextDeclaration<C>): C;
-}
+export type ContextResolver = <P, C extends Context>(params: P, context: ContextDeclaration<C>) => Promise<C | C[]>;

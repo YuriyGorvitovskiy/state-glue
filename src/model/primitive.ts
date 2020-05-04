@@ -16,7 +16,12 @@ export enum JSPrimitive {
     UNDEFINED = "undefined",
 }
 
+export type reference = string;
+export type class_id = string;
+export type attr_id = string;
+
 export type primitive = boolean | number | string | Date;
+export type value = primitive | readonly primitive[];
 
 export function primitiveOf(a: primitive): JSPrimitive {
     if (null == a) {
