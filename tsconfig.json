@@ -2,13 +2,21 @@
     "compileOnSave": true,
     "compilerOptions": {
         "declaration": true,
-        "lib": ["es5", "es2015.iterable", "es2015.promise"],
+        "lib": [
+            "es2020",
+            "dom"
+        ],
         "module": "commonjs",
         "outDir": "./build/js",
         "resolveJsonModule": true,
         "strict": false,
         "target": "es5"
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "**/*.test.ts"]
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.test.ts"
+    ]
 }
