@@ -14,6 +14,8 @@ export * from "./entity/selector";
 export * from "./event/consumer";
 export * from "./event/event";
 
+export * from "./jsonql/query";
+
 export * from "./model/attribute";
 export * from "./model/class";
 export * from "./model/container";
