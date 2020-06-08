@@ -8,7 +8,7 @@ export interface ISort {
 
 export interface IField {
     readonly $field?: string;
-    readonly $cmp?: "any" | "equal" | "not equal" | "in" | "not in" | "between" | "outside" | "<=" | "<" | ">" | ">=";
+    readonly $cmp?: "any" | "=" | "!=" | "in" | "!in" | "><" | "<>" | "<=" | "<" | ">" | ">=" | "like" | "!like";
     readonly $value?: value;
     readonly $return?: boolean;
     readonly $sort?: ISort | "none";
@@ -16,38 +16,40 @@ export interface IField {
 }
 
 export type ISubQuery<R> = {
-    [key in keyof R | "$type" | "$page" | "$aggregate" | "$dir" | "$field" | "$cmp" | "$return"]?: key extends "$type"
-        ? string
-        : key extends "$page"
-        ? IPage | "all"
-        : key extends "$aggregate"
-        ? boolean
-        : key extends "$dir"
-        ? "forward" | "reverse"
-        : key extends "$field"
-        ? string
-        : key extends "$cmp"
-        ? "any" | "exist" | "not exist"
-        : key extends "$return"
-        ? boolean
-        : key extends keyof R
-        ? ISubQuery<R[key]> | IField | value
-        : void;
+    [key in keyof R | "$type" | "$page" | "$aggregate" | "$dir" | "$field" | "$cmp" | "$return"]?
+    : key extends "$type"
+    ? string
+    : key extends "$page"
+    ? IPage | "all"
+    : key extends "$aggregate"
+    ? boolean
+    : key extends "$dir"
+    ? "forward" | "reverse"
+    : key extends "$field"
+    ? string
+    : key extends "$cmp"
+    ? "any" | "exist" | "!exist"
+    : key extends "$return"
+    ? boolean
+    : key extends keyof R
+    ? ISubQuery<R[key]> | IField | value
+    : void;
 };
 
 export type IQuery<R> = {
-    [key in keyof R | "$type" | "$page" | "$aggregate"]?: key extends "$type"
-        ? string
-        : key extends "$page"
-        ? IPage | "all"
-        : key extends "$aggregate"
-        ? boolean
-        : key extends keyof R
-        ? ISubQuery<R[key]> | IField | value
-        : void;
+    [key in keyof R | "$type" | "$page" | "$aggregate"]?
+    : key extends "$type"
+    ? string
+    : key extends "$page"
+    ? IPage | "all"
+    : key extends "$aggregate"
+    ? boolean
+    : key extends keyof R
+    ? ISubQuery<R[key]> | IField | value
+    : void;
 };
 
-type ISelect<R> = {
+export type ISelect<R> = {
     [key in keyof R]: ISubQuery<R[key]> | IField;
 };
 
@@ -89,7 +91,7 @@ const injectFieldDefaults = <R>(key: keyof R, aggregate: boolean, field: IField)
 const injectChildrenDefaults = <R>(aggregate: boolean, select: ISelect<R>): ISelect<R> => {
     return Object.fromEntries(
         Object.entries(select)
-            .filter(([k]) => "$" !== k.substring(0, 1))
+            .filter(([k]) => !k.startsWith("$"))
             .map(([k, v]) => [k, injectChildDefaults(k as keyof R, aggregate, v)])
     ) as ISelect<R>;
 };
@@ -102,6 +104,6 @@ const injectChildDefaults = <R, T extends ISubQuery<R> | IField | value>(
     return null == v || Array.isArray(v) || typeof v !== "object"
         ? injectFieldDefaults(k, aggregate, { $value: v as value })
         : "$type" in v
-        ? injectSubQueryDefaults(k, aggregate, v as ISubQuery<R>)
-        : injectFieldDefaults(k, aggregate, v as IField);
+            ? injectSubQueryDefaults(k, aggregate, v as ISubQuery<R>)
+            : injectFieldDefaults(k, aggregate, v as IField);
 };
